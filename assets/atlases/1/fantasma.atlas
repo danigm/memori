@@ -1,0 +1,90 @@
+
+fantasma.png
+size: 1838, 634
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+stand.left
+  rotate: false
+  xy: 2, 2
+  size: 457, 630
+  orig: 471, 721
+  offset: 7, 56
+  index: 2
+talk.left
+  rotate: false
+  xy: 2, 2
+  size: 457, 630
+  orig: 471, 721
+  offset: 7, 56
+  index: 2
+walk.left
+  rotate: false
+  xy: 2, 2
+  size: 457, 630
+  orig: 471, 721
+  offset: 7, 56
+  index: 2
+stand.left
+  rotate: false
+  xy: 461, 3
+  size: 457, 629
+  orig: 471, 721
+  offset: 7, 32
+  index: 1
+talk.left
+  rotate: false
+  xy: 461, 3
+  size: 457, 629
+  orig: 471, 721
+  offset: 7, 32
+  index: 1
+walk.left
+  rotate: false
+  xy: 461, 3
+  size: 457, 629
+  orig: 471, 721
+  offset: 7, 32
+  index: 1
+stand.left
+  rotate: false
+  xy: 920, 3
+  size: 457, 629
+  orig: 471, 721
+  offset: 8, 56
+  index: 3
+talk.left
+  rotate: false
+  xy: 920, 3
+  size: 457, 629
+  orig: 471, 721
+  offset: 8, 56
+  index: 3
+walk.left
+  rotate: false
+  xy: 920, 3
+  size: 457, 629
+  orig: 471, 721
+  offset: 8, 56
+  index: 3
+stand.left
+  rotate: false
+  xy: 1379, 3
+  size: 457, 629
+  orig: 471, 721
+  offset: 7, 24
+  index: 4
+talk.left
+  rotate: false
+  xy: 1379, 3
+  size: 457, 629
+  orig: 471, 721
+  offset: 7, 24
+  index: 4
+walk.left
+  rotate: false
+  xy: 1379, 3
+  size: 457, 629
+  orig: 471, 721
+  offset: 7, 24
+  index: 4

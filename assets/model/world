@@ -1,0 +1,62 @@
+{
+width: 1920,
+height: 1080,
+initChapter: "00",
+verbs: {
+	dialog: {
+		id: "dialog",
+		actions: [
+			{
+				class: "Cutmode",
+				value: true
+			},
+			{
+				class: "SayDialog",
+				wait: true
+			},
+			{
+				class: "Cutmode",
+				value: false
+			}
+		]
+	},
+	initNewGame: {
+		id: "initNewGame",
+		actions: []
+	},
+	use: {
+		id: "use",
+		actions: [
+			{
+				class: "LookAt",
+				text: "@default.use.0.text",
+				wait: false
+			}
+		]
+	},
+	lookat: {
+		id: "lookat",
+		actions: [
+			{
+				class: "LookAt",
+				text: "@default.lookat.0.text",
+				wait: true
+			}
+		]
+	},
+	pickup: {
+		id: "pickup",
+		actions: [
+			{
+				class: "LookAt",
+				text: "@default.pickup.0.text",
+				wait: true
+			}
+		]
+	},
+	initSavedGame: {
+		id: "initSavedGame",
+		actions: []
+	}
+}
+}

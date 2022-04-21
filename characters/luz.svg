@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg6254"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   sodipodi:docname="luz.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview6256"
+     pagecolor="#000000"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.66368547"
+     inkscape:cx="218.47699"
+     inkscape:cy="558.99974"
+     inkscape:window-width="1920"
+     inkscape:window-height="1011"
+     inkscape:window-x="0"
+     inkscape:window-y="32"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs6251">
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter6889"
+       x="-0.16627638"
+       y="-0.16627638"
+       width="1.3325528"
+       height="1.3325528">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="3.3077683"
+         id="feGaussianBlur6891" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter6893"
+       x="-0.34255095"
+       y="-0.34255095"
+       width="1.6851019"
+       height="1.6851019">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="9.3823758"
+         id="feGaussianBlur6895" />
+    </filter>
+  </defs>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <circle
+       style="opacity:1;fill:#42f4ff;fill-opacity:1;stroke-width:0.264583;stroke-linecap:round;stroke-linejoin:round;filter:url(#filter6893)"
+       id="circle6869"
+       cx="101.80137"
+       cy="110.32973"
+       r="32.867668"
+       inkscape:export-filename="/home/danigm/Projects/adventures/memori/characters/luz/luz.png"
+       inkscape:export-xdpi="91.720001"
+       inkscape:export-ydpi="91.720001" />
+    <circle
+       style="opacity:1;mix-blend-mode:normal;fill:#ffffff;fill-opacity:1;stroke-width:0.302298;stroke-linecap:round;stroke-linejoin:round;filter:url(#filter6889)"
+       id="path6589"
+       cx="101.80137"
+       cy="110.32975"
+       r="23.871834"
+       transform="matrix(0.87523765,0,0,0.87523765,12.700979,13.765001)" />
+  </g>
+</svg>

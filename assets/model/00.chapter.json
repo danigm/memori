@@ -1,0 +1,272 @@
+{
+bladeEngineVersion: "4.1.0",
+sounds: {},
+scenes: {
+	"hacia-la-luz-1": {
+		id: "hacia-la-luz-1",
+		layers: [
+			{
+				name: "foreground"
+			},
+			{
+				name: "dynamic",
+				dynamic: true
+			},
+			{
+				name: "background"
+			}
+		],
+		actors: {
+			comienzo: {
+				class: "AnchorActor",
+				id: "comienzo",
+				bbox: [],
+				pos: {
+					x: 1487.4166,
+					y: 205.44427
+				},
+				visible: true
+			},
+			fantasma: {
+				class: "CharacterActor",
+				id: "fantasma",
+				bbox: [ 0, 0, 0, 0, 0, 0, 0, 0 ],
+				pos: {
+					x: 1479.199,
+					y: 164.35541
+				},
+				visible: true,
+				refPoint: {},
+				verbs: {},
+				interaction: false,
+				zIndex: 0,
+				layer: "foreground",
+				renderer: {
+					class: "AtlasRenderer",
+					fanims: {
+						"stand.left": {
+							class: "AtlasAnimationDesc",
+							id: "stand.left",
+							source: "fantasma",
+							duration: 1.9,
+							animationType: "REPEAT",
+							count: -1,
+							preload: true
+						},
+						"talk.left": {
+							class: "AtlasAnimationDesc",
+							id: "talk.left",
+							source: "fantasma",
+							duration: 1.9,
+							animationType: "NO_REPEAT",
+							count: -1,
+							preload: true
+						},
+						"walk.left": {
+							class: "AtlasAnimationDesc",
+							id: "walk.left",
+							source: "fantasma",
+							duration: 1.9,
+							animationType: "NO_REPEAT",
+							count: -1,
+							preload: true
+						}
+					},
+					initAnimation: "talk.right",
+					orgAlign: 4
+				},
+				scaleX: 0.6242979,
+				scaleY: 0.6242979,
+				rot: 0,
+				fakeDepth: true,
+				bboxFromRenderer: true,
+				walkingSpeed: 1000
+			},
+			luz: {
+				class: "CharacterActor",
+				id: "luz",
+				bbox: [ 0, 0, 0, 0, 0, 0, 0, 0 ],
+				pos: {
+					x: 306.79678,
+					y: 643.72534
+				},
+				visible: true,
+				refPoint: {},
+				verbs: {
+					lookat: {
+						id: "lookat",
+						actions: [
+							{
+								class: "Say",
+								actor: "$PLAYER",
+								text: "@hacia-la-luz-1.luz.lookat.0.text",
+								type: "TALK",
+								queue: false,
+								wait: true
+							}
+						]
+					},
+					enter: {
+						id: "enter",
+						actions: [
+							{
+								class: "Goto",
+								actor: "$PLAYER",
+								target: "comienzo",
+								ignoreWalkZone: false,
+								wait: true
+							},
+							{
+								class: "Say",
+								actor: "$PLAYER",
+								text: "@hacia-la-luz-1.luz.enter.1.text",
+								type: "TALK",
+								queue: false,
+								wait: false
+							}
+						]
+					},
+					talkto: {
+						id: "talkto",
+						actions: [
+							{
+								class: "Talkto",
+								actor: "luz",
+								dialog: "luz"
+							}
+						]
+					}
+				},
+				interaction: true,
+				zIndex: 0,
+				layer: "background",
+				renderer: {
+					class: "AtlasRenderer",
+					fanims: {
+						stand: {
+							class: "AtlasAnimationDesc",
+							id: "stand",
+							source: "luz",
+							duration: 1,
+							animationType: "NO_REPEAT",
+							count: -1,
+							preload: true
+						},
+						talk: {
+							class: "AtlasAnimationDesc",
+							id: "talk",
+							source: "luz",
+							duration: 1,
+							animationType: "NO_REPEAT",
+							count: -1,
+							preload: true
+						}
+					},
+					initAnimation: "stand",
+					orgAlign: 4
+				},
+				scaleX: 0.61520636,
+				scaleY: 0.61520636,
+				rot: 0,
+				fakeDepth: false,
+				bboxFromRenderer: true,
+				dialogs: {
+					luz: {
+						id: "luz",
+						options: [
+							{
+								text: "@hacia-la-luz-1.luz.luz.0.text",
+								responseText: "@hacia-la-luz-1.luz.luz.0.responseText",
+								verbId: null,
+								next: "luz",
+								once: false,
+								soundId: null,
+								responseSoundId: null,
+								visible: true
+							},
+							{
+								text: "@hacia-la-luz-1.luz.luz.1.text1",
+								responseText: "@hacia-la-luz-1.luz.luz.1.responseText1",
+								verbId: null,
+								next: null,
+								once: false,
+								soundId: null,
+								responseSoundId: null,
+								visible: true
+							},
+							{
+								text: "@hacia-la-luz-1.luz.luz.1.text",
+								responseText: "@hacia-la-luz-1.luz.luz.1.responseText",
+								verbId: null,
+								next: "luz",
+								once: false,
+								soundId: null,
+								responseSoundId: null,
+								visible: true
+							}
+						]
+					}
+				},
+				walkingSpeed: 1000
+			},
+			walk: {
+				class: "WalkZoneActor",
+				id: "walk",
+				bbox: [ 20.527237, -109.57036, 193.10046, 482.1435, 1801.0786, 161.65033, 1812.0358, -208.18356 ],
+				pos: {
+					x: 101.352554,
+					y: 323.2323
+				},
+				visible: true
+			}
+		},
+		backgroundAtlas: "backgrounds-1",
+		backgroundRegionId: "luz",
+		musicDesc: null,
+		depthVector: {
+			x: 833.4668,
+			y: -238.31544
+		},
+		verbs: {
+			init: {
+				id: "init",
+				actions: [
+					{
+						class: "Say",
+						actor: "$PLAYER",
+						text: "@hacia-la-luz-1.init.0.text",
+						type: "TALK",
+						queue: false,
+						wait: true
+					},
+					{
+						class: "Say",
+						actor: "$PLAYER",
+						text: "@hacia-la-luz-1.init.1.text",
+						type: "TALK",
+						queue: false,
+						wait: true
+					},
+					{
+						class: "Say",
+						actor: "luz",
+						text: "@hacia-la-luz-1.init.1.text1",
+						type: "SUBTITLE",
+						queue: false,
+						wait: true
+					},
+					{
+						class: "LookAt",
+						actor: "luz",
+						text: "@hacia-la-luz-1.init.3.text",
+						wait: true
+					}
+				]
+			}
+		},
+		player: "fantasma",
+		walkZone: "walk"
+	}
+},
+initScene: "hacia-la-luz-1"
+}
