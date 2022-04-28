@@ -2,6 +2,95 @@
 bladeEngineVersion: "4.1.0",
 sounds: {},
 scenes: {
+	crimen: {
+		id: "crimen",
+		layers: [
+			{
+				name: "foreground"
+			},
+			{
+				name: "dynamic",
+				dynamic: true
+			},
+			{
+				name: "background"
+			}
+		],
+		actors: {
+			fantasma: {
+				class: "CharacterActor",
+				id: "fantasma",
+				bbox: [ 0, 0, 0, 0, 0, 0, 0, 0 ],
+				pos: {
+					x: 782.2222,
+					y: 169.72437
+				},
+				visible: true,
+				refPoint: {},
+				verbs: {},
+				interaction: false,
+				zIndex: 0,
+				layer: "foreground",
+				renderer: {
+					class: "AtlasRenderer",
+					fanims: {
+						"stand.left": {
+							class: "AtlasAnimationDesc",
+							id: "stand.left",
+							source: "fantasma",
+							duration: 1,
+							animationType: "REPEAT",
+							count: -1,
+							preload: true
+						},
+						"talk.left": {
+							class: "AtlasAnimationDesc",
+							id: "talk.left",
+							source: "fantasma",
+							duration: 1,
+							animationType: "REPEAT",
+							count: -1,
+							preload: true
+						},
+						"walk.left": {
+							class: "AtlasAnimationDesc",
+							id: "walk.left",
+							source: "fantasma",
+							duration: 1,
+							animationType: "REPEAT",
+							count: -1,
+							preload: true
+						}
+					},
+					initAnimation: "stand.left",
+					orgAlign: 4
+				},
+				scaleX: 0.547282,
+				scaleY: 0.547282,
+				rot: 0,
+				fakeDepth: true,
+				bboxFromRenderer: true,
+				walkingSpeed: 1000
+			},
+			walk1: {
+				class: "WalkZoneActor",
+				id: "walk1",
+				bbox: [ -5.9888916, -65.08472, 15.706238, 926.77966, 804.5175, 931.6759, 898.5849, 301.2931, 2041.6947, 283.16385, 2077.853, -86.77966 ],
+				pos: {},
+				visible: true
+			}
+		},
+		backgroundAtlas: "backgrounds-1",
+		backgroundRegionId: "crimen",
+		musicDesc: null,
+		depthVector: {
+			x: 1707.2899,
+			y: -1102.1675
+		},
+		verbs: {},
+		player: "fantasma",
+		walkZone: "walk1"
+	},
 	"hacia-la-luz-1": {
 		id: "hacia-la-luz-1",
 		layers: [
@@ -106,6 +195,23 @@ scenes: {
 							}
 						]
 					},
+					fin: {
+						id: "fin",
+						actions: [
+							{
+								class: "Transition",
+								time: 1,
+								color: "000000ff",
+								type: "FADE_OUT",
+								wait: true
+							},
+							{
+								class: "Leave",
+								scene: "crimen",
+								init: true
+							}
+						]
+					},
 					enter: {
 						id: "enter",
 						actions: [
@@ -130,9 +236,44 @@ scenes: {
 						id: "talkto",
 						actions: [
 							{
+								class: "LookAt",
+								actor: "luz",
+								wait: true
+							},
+							{
 								class: "Talkto",
 								actor: "luz",
 								dialog: "luz"
+							}
+						]
+					},
+					pista: {
+						id: "pista",
+						actions: [
+							{
+								class: "SetActorAttr",
+								actor: "hacia-la-luz-1#yolo",
+								visible: true
+							},
+							{
+								class: "AlphaAnim",
+								actor: "yolo",
+								alpha: 0,
+								speed: 0,
+								count: 1,
+								wait: true,
+								repeat: "NO_REPEAT",
+								interpolation: "LINEAR"
+							},
+							{
+								class: "AlphaAnim",
+								actor: "yolo",
+								alpha: 1,
+								speed: 1,
+								count: 1,
+								wait: true,
+								repeat: "NO_REPEAT",
+								interpolation: "FADE"
 							}
 						]
 					}
@@ -185,16 +326,6 @@ scenes: {
 								visible: true
 							},
 							{
-								text: "@hacia-la-luz-1.luz.luz.1.text1",
-								responseText: "@hacia-la-luz-1.luz.luz.1.responseText1",
-								verbId: null,
-								next: null,
-								once: false,
-								soundId: null,
-								responseSoundId: null,
-								visible: true
-							},
-							{
 								text: "@hacia-la-luz-1.luz.luz.1.text",
 								responseText: "@hacia-la-luz-1.luz.luz.1.responseText",
 								verbId: null,
@@ -203,6 +334,121 @@ scenes: {
 								soundId: null,
 								responseSoundId: null,
 								visible: true
+							},
+							{
+								text: "@hacia-la-luz-1.luz.luz.3.text",
+								responseText: "@hacia-la-luz-1.luz.luz.3.responseText",
+								verbId: null,
+								next: "salida",
+								once: false,
+								soundId: null,
+								responseSoundId: null,
+								visible: true
+							},
+							{
+								text: "@hacia-la-luz-1.luz.luz.1.text1",
+								responseText: "@hacia-la-luz-1.luz.luz.1.responseText1",
+								verbId: null,
+								next: null,
+								once: false,
+								soundId: null,
+								responseSoundId: null,
+								visible: true
+							}
+						]
+					},
+					exit: {
+						id: "exit",
+						options: [
+							{
+								text: "@hacia-la-luz-1.luz.exit.0.text",
+								responseText: "@hacia-la-luz-1.luz.exit.0.responseText",
+								verbId: "fin",
+								next: null,
+								once: false,
+								soundId: null,
+								responseSoundId: null,
+								visible: true
+							}
+						]
+					},
+					pista: {
+						id: "pista",
+						options: [
+							{
+								text: "@hacia-la-luz-1.luz.pista.0.text",
+								responseText: null,
+								verbId: "pista",
+								next: null,
+								once: false,
+								soundId: null,
+								responseSoundId: null,
+								visible: true
+							}
+						]
+					},
+					salida: {
+						id: "salida",
+						options: [
+							{
+								text: "@hacia-la-luz-1.luz.salida.0.text",
+								responseText: "@hacia-la-luz-1.luz.salida.0.responseText",
+								verbId: null,
+								next: "this",
+								once: false,
+								soundId: null,
+								responseSoundId: null,
+								visible: true
+							},
+							{
+								text: "@hacia-la-luz-1.luz.salida.1.text1",
+								responseText: "@hacia-la-luz-1.luz.salida.1.responseText1",
+								verbId: null,
+								next: "pista",
+								once: false,
+								soundId: null,
+								responseSoundId: null,
+								visible: true
+							},
+							{
+								text: "@hacia-la-luz-1.luz.salida.1.text",
+								responseText: "@hacia-la-luz-1.luz.salida.1.responseText",
+								verbId: null,
+								next: "this",
+								once: false,
+								soundId: null,
+								responseSoundId: null,
+								visible: true
+							},
+							{
+								text: "@hacia-la-luz-1.luz.salida.2.text",
+								responseText: "@hacia-la-luz-1.luz.salida.2.responseText",
+								verbId: null,
+								next: "this",
+								once: false,
+								soundId: null,
+								responseSoundId: null,
+								visible: true
+							},
+							{
+								text: "@hacia-la-luz-1.luz.salida.3.text",
+								responseText: "@hacia-la-luz-1.luz.salida.3.responseText",
+								verbId: null,
+								next: "luz",
+								once: false,
+								soundId: null,
+								responseSoundId: null,
+								visible: true
+							},
+							{
+								text: "@hacia-la-luz-1.luz.salida.4.text",
+								responseText: "@hacia-la-luz-1.luz.salida.4.responseText",
+								verbId: null,
+								next: "exit",
+								once: false,
+								soundId: null,
+								responseSoundId: null,
+								visible: false
 							}
 						]
 					}
@@ -218,6 +464,204 @@ scenes: {
 					y: 323.2323
 				},
 				visible: true
+			},
+			yolo: {
+				class: "CharacterActor",
+				id: "yolo",
+				bbox: [ 0, 0, 0, 0, 0, 0, 0, 0 ],
+				pos: {
+					x: 1785.9957,
+					y: 353.36426
+				},
+				visible: true,
+				refPoint: {},
+				verbs: {
+					yolo: {
+						id: "yolo",
+						actions: [
+							{
+								class: "SetDialogOptionAttr",
+								actor: "hacia-la-luz-1#luz",
+								dialog: "salida",
+								option: 5,
+								visible: true
+							}
+						]
+					},
+					lookat: {
+						id: "lookat",
+						actions: [
+							{
+								class: "Say",
+								actor: "$PLAYER",
+								text: "@hacia-la-luz-1.yolo.lookat.0.text",
+								type: "TALK",
+								queue: false,
+								wait: true
+							}
+						]
+					},
+					talkto: {
+						id: "talkto",
+						actions: [
+							{
+								class: "Goto",
+								actor: "$PLAYER",
+								target: "yolo",
+								pos: "-150.0,0.0",
+								ignoreWalkZone: false,
+								wait: true
+							},
+							{
+								class: "Talkto",
+								actor: "yolo",
+								dialog: "hola"
+							}
+						]
+					}
+				},
+				interaction: true,
+				zIndex: 0,
+				layer: "foreground",
+				renderer: {
+					class: "AtlasRenderer",
+					fanims: {
+						"stand.left": {
+							class: "AtlasAnimationDesc",
+							id: "stand.left",
+							source: "fantasma",
+							duration: 1,
+							animationType: "NO_REPEAT",
+							count: -1,
+							preload: true
+						},
+						"talk.left": {
+							class: "AtlasAnimationDesc",
+							id: "talk.left",
+							source: "fantasma",
+							duration: 1,
+							animationType: "NO_REPEAT",
+							count: -1,
+							preload: true
+						},
+						"walk.left": {
+							class: "AtlasAnimationDesc",
+							id: "walk.left",
+							source: "fantasma",
+							duration: 1,
+							animationType: "NO_REPEAT",
+							count: -1,
+							preload: true
+						}
+					},
+					initAnimation: "stand.left",
+					orgAlign: 4
+				},
+				tint: {
+					r: 1,
+					g: 0.16078432,
+					b: 0.16078432,
+					a: 0.7372549
+				},
+				scaleX: 0.44794786,
+				scaleY: 0.44794786,
+				rot: 0,
+				fakeDepth: true,
+				bboxFromRenderer: true,
+				dialogs: {
+					yolo: {
+						id: "yolo",
+						options: [
+							{
+								text: "@hacia-la-luz-1.yolo.yolo.0.text",
+								responseText: "@hacia-la-luz-1.yolo.yolo.0.responseText",
+								verbId: null,
+								next: "this",
+								once: false,
+								soundId: null,
+								responseSoundId: null,
+								visible: true
+							},
+							{
+								text: "@hacia-la-luz-1.yolo.yolo.1.text",
+								responseText: "@hacia-la-luz-1.yolo.yolo.1.responseText",
+								verbId: null,
+								next: "pista",
+								once: false,
+								soundId: null,
+								responseSoundId: null,
+								visible: true
+							}
+						]
+					},
+					hola: {
+						id: "hola",
+						options: [
+							{
+								text: "@hacia-la-luz-1.yolo.hola.0.text",
+								responseText: "@hacia-la-luz-1.yolo.hola.0.responseText",
+								verbId: null,
+								next: "this",
+								once: false,
+								soundId: null,
+								responseSoundId: null,
+								visible: true
+							},
+							{
+								text: "@hacia-la-luz-1.yolo.hola.1.text",
+								responseText: "@hacia-la-luz-1.yolo.hola.1.responseText",
+								verbId: null,
+								next: "this",
+								once: false,
+								soundId: null,
+								responseSoundId: null,
+								visible: true
+							},
+							{
+								text: "@hacia-la-luz-1.yolo.hola.2.text",
+								responseText: "@hacia-la-luz-1.yolo.hola.2.responseText",
+								verbId: null,
+								next: "yolo",
+								once: false,
+								soundId: null,
+								responseSoundId: null,
+								visible: true
+							},
+							{
+								text: "@hacia-la-luz-1.yolo.hola.3.text",
+								responseText: "@hacia-la-luz-1.yolo.hola.3.responseText",
+								verbId: null,
+								next: null,
+								once: false,
+								soundId: null,
+								responseSoundId: null,
+								visible: true
+							}
+						]
+					},
+					pista: {
+						id: "pista",
+						options: [
+							{
+								text: "@hacia-la-luz-1.yolo.pista.0.text",
+								responseText: null,
+								verbId: "yolo",
+								next: null,
+								once: false,
+								soundId: null,
+								responseSoundId: null,
+								visible: true
+							}
+						]
+					}
+				},
+				textColor: {
+					r: 0.98039216,
+					g: 0.13725491,
+					b: 0.13725491,
+					a: 1
+				},
+				walkingSpeed: 1000
 			}
 		},
 		backgroundAtlas: "backgrounds-1",
@@ -231,6 +675,15 @@ scenes: {
 			init: {
 				id: "init",
 				actions: [
+					{
+						class: "Cutmode",
+						value: true
+					},
+					{
+						class: "SetActorAttr",
+						actor: "hacia-la-luz-1#yolo",
+						visible: false
+					},
 					{
 						class: "Say",
 						actor: "$PLAYER",
@@ -260,6 +713,10 @@ scenes: {
 						actor: "luz",
 						text: "@hacia-la-luz-1.init.3.text",
 						wait: true
+					},
+					{
+						class: "Cutmode",
+						value: false
 					}
 				]
 			}
