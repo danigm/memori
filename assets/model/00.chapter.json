@@ -17,6 +17,217 @@ scenes: {
 			}
 		],
 		actors: {
+			camara: {
+				class: "InteractiveActor",
+				id: "camara",
+				bbox: [ -100, 0, -100, 200, 100, 200, 100, 0 ],
+				pos: {
+					x: 2614.2373,
+					y: 828.0226
+				},
+				visible: true,
+				refPoint: {},
+				verbs: {
+					lookat: {
+						id: "lookat",
+						actions: [
+							{
+								class: "Say",
+								actor: "$PLAYER",
+								text: "@crimen.camara.lookat.0.text",
+								type: "TALK",
+								queue: false,
+								wait: true
+							},
+							{
+								class: "ActorState",
+								actor: "crimen#puerta",
+								state: "activa"
+							}
+						]
+					}
+				},
+				interaction: true,
+				zIndex: 0,
+				layer: "background"
+			},
+			cartera: {
+				class: "SpriteActor",
+				id: "cartera",
+				bbox: [ 0, 0, 0, 0, 0, 0, 0, 0 ],
+				pos: {
+					x: 2043.4858,
+					y: 197.22656
+				},
+				visible: true,
+				refPoint: {},
+				verbs: {
+					lookat: {
+						id: "lookat",
+						actions: [
+							{
+								class: "Say",
+								actor: "$PLAYER",
+								text: "@crimen.cartera.lookat.0.text",
+								type: "TALK",
+								queue: false,
+								wait: true
+							},
+							{
+								class: "IfActorAttr",
+								actor: "crimen#cartera",
+								attr: "STATE",
+								value: "enmano",
+								caID: "709024866"
+							},
+							{
+								class: "Say",
+								actor: "$PLAYER",
+								text: "@crimen.cartera.lookat.2.text",
+								type: "TALK",
+								queue: false,
+								wait: true
+							},
+							{
+								class: "SetActorAttr",
+								actor: "crimen#cartera",
+								visible: false
+							},
+							{
+								class: "DropItem",
+								actor: "cartera"
+							},
+							{
+								class: "PickUp",
+								actor: "crimen#cartera2"
+							},
+							{
+								class: "PickUp",
+								actor: "crimen#tarjeta"
+							},
+							{
+								class: "End",
+								caID: "709024866"
+							},
+							{
+								class: "End",
+								caID: "709024866"
+							}
+						]
+					},
+					pickup: {
+						id: "pickup",
+						actions: [
+							{
+								class: "Cutmode",
+								value: true
+							},
+							{
+								class: "Goto",
+								actor: "$PLAYER",
+								target: "cartera",
+								ignoreWalkZone: false,
+								wait: true
+							},
+							{
+								class: "PickUp",
+								actor: "crimen#cartera"
+							},
+							{
+								class: "ActorState",
+								actor: "crimen#cartera",
+								state: "enmano"
+							},
+							{
+								class: "Say",
+								actor: "$PLAYER",
+								text: "@crimen.cartera.pickup.0.text",
+								type: "TALK",
+								queue: false,
+								wait: true
+							},
+							{
+								class: "Cutmode",
+								value: false
+							}
+						]
+					}
+				},
+				interaction: true,
+				zIndex: 0,
+				layer: "dynamic",
+				renderer: {
+					class: "AtlasRenderer",
+					fanims: {
+						cartera1: {
+							class: "AtlasAnimationDesc",
+							id: "cartera1",
+							source: "crimen",
+							duration: 1,
+							animationType: "NO_REPEAT",
+							count: -1,
+							preload: true
+						}
+					},
+					initAnimation: "cartera1",
+					orgAlign: 4
+				},
+				scaleX: 1,
+				scaleY: 1,
+				rot: 0,
+				fakeDepth: false,
+				bboxFromRenderer: true
+			},
+			cartera2: {
+				class: "SpriteActor",
+				id: "cartera2",
+				bbox: [ 0, 0, 0, 0, 0, 0, 0, 0 ],
+				pos: {
+					x: 21.914064,
+					y: -408.1493
+				},
+				visible: true,
+				refPoint: {},
+				verbs: {
+					lookat: {
+						id: "lookat",
+						actions: [
+							{
+								class: "Say",
+								actor: "$PLAYER",
+								text: "@crimen.cartera2.lookat.0.text",
+								type: "TALK",
+								queue: false,
+								wait: true
+							}
+						]
+					}
+				},
+				interaction: true,
+				zIndex: 0,
+				layer: "dynamic",
+				renderer: {
+					class: "AtlasRenderer",
+					fanims: {
+						cartera2: {
+							class: "AtlasAnimationDesc",
+							id: "cartera2",
+							source: "crimen",
+							duration: 1,
+							animationType: "NO_REPEAT",
+							count: -1,
+							preload: true
+						}
+					},
+					initAnimation: "cartera2",
+					orgAlign: 4
+				},
+				scaleX: 1,
+				scaleY: 1,
+				rot: 0,
+				fakeDepth: false,
+				bboxFromRenderer: true
+			},
 			fantasma: {
 				class: "CharacterActor",
 				id: "fantasma",
@@ -30,7 +241,7 @@ scenes: {
 				verbs: {},
 				interaction: false,
 				zIndex: 0,
-				layer: "foreground",
+				layer: "dynamic",
 				renderer: {
 					class: "AtlasRenderer",
 					fanims: {
@@ -72,10 +283,498 @@ scenes: {
 				bboxFromRenderer: true,
 				walkingSpeed: 1000
 			},
+			gorila: {
+				class: "CharacterActor",
+				id: "gorila",
+				bbox: [ 0, 0, 0, 0, 0, 0, 0, 0 ],
+				pos: {
+					x: 3300.805,
+					y: 301.3183
+				},
+				visible: true,
+				refPoint: {},
+				verbs: {
+					lookat: {
+						id: "lookat",
+						actions: [
+							{
+								class: "Say",
+								actor: "$PLAYER",
+								text: "@crimen.gorila.lookat.0.text",
+								type: "TALK",
+								queue: false,
+								wait: true
+							}
+						]
+					}
+				},
+				interaction: true,
+				zIndex: 0,
+				layer: "dynamic",
+				renderer: {
+					class: "AtlasRenderer",
+					fanims: {
+						stand: {
+							class: "AtlasAnimationDesc",
+							id: "stand",
+							source: "gorila",
+							duration: 1,
+							animationType: "NO_REPEAT",
+							count: -1,
+							preload: true
+						},
+						talk: {
+							class: "AtlasAnimationDesc",
+							id: "talk",
+							source: "gorila",
+							duration: 1,
+							animationType: "NO_REPEAT",
+							count: -1,
+							preload: true
+						}
+					},
+					initAnimation: "stand",
+					orgAlign: 4
+				},
+				scaleX: 1,
+				scaleY: 1,
+				rot: 0,
+				fakeDepth: false,
+				bboxFromRenderer: true,
+				walkingSpeed: 1000
+			},
+			huellas: {
+				class: "InteractiveActor",
+				id: "huellas",
+				bbox: [ -63.841797, 72.31641, -56.610107, 167.45764, 56.61035, 160.22595, 74.68921, 68.70062 ],
+				pos: {
+					x: 2270.7346,
+					y: 50.62149
+				},
+				visible: true,
+				refPoint: {},
+				verbs: {
+					lookat: {
+						id: "lookat",
+						actions: [
+							{
+								class: "Say",
+								actor: "$PLAYER",
+								text: "@crimen.huellas.lookat.0.text",
+								type: "TALK",
+								queue: false,
+								wait: true
+							},
+							{
+								class: "Property",
+								prop: "huella",
+								value: "true"
+							}
+						]
+					}
+				},
+				interaction: true,
+				zIndex: 0,
+				layer: "foreground"
+			},
+			marca: {
+				class: "InteractiveActor",
+				id: "marca",
+				bbox: [ -100, 0, -100, 200, 341.0547, 205.47855, 321.87988, -16.435555 ],
+				pos: {
+					x: 1624.3798,
+					y: 90.39551
+				},
+				visible: true,
+				refPoint: {},
+				verbs: {
+					lookat: {
+						id: "lookat",
+						actions: [
+							{
+								class: "Cutmode",
+								value: true
+							},
+							{
+								class: "Goto",
+								actor: "$PLAYER",
+								target: "marca",
+								pos: "0.0,100.0",
+								ignoreWalkZone: false,
+								wait: true
+							},
+							{
+								class: "LookAt",
+								actor: "marca",
+								wait: true
+							},
+							{
+								class: "Say",
+								actor: "$PLAYER",
+								text: "@crimen.marca.lookat.3.text",
+								type: "TALK",
+								queue: false,
+								wait: true
+							},
+							{
+								class: "Cutmode",
+								value: false
+							}
+						]
+					}
+				},
+				interaction: true,
+				zIndex: 0,
+				layer: "background"
+			},
+			navaja: {
+				class: "SpriteActor",
+				id: "navaja",
+				bbox: [ 0, 0, 0, 0, 0, 0, 0, 0 ],
+				pos: {
+					x: 1458.0106,
+					y: 228.01578
+				},
+				visible: true,
+				refPoint: {},
+				verbs: {
+					lookat: {
+						id: "lookat",
+						actions: [
+							{
+								class: "Say",
+								actor: "$PLAYER",
+								text: "@crimen.navaja.lookat.0.text",
+								type: "TALK",
+								queue: false,
+								wait: true
+							}
+						]
+					},
+					pickup: {
+						id: "pickup",
+						actions: [
+							{
+								class: "Cutmode",
+								value: true
+							},
+							{
+								class: "Goto",
+								actor: "$PLAYER",
+								target: "navaja",
+								ignoreWalkZone: false,
+								wait: true
+							},
+							{
+								class: "PickUp",
+								actor: "crimen#navaja"
+							},
+							{
+								class: "Say",
+								actor: "$PLAYER",
+								text: "@crimen.navaja.pickup.3.text",
+								type: "TALK",
+								queue: false,
+								wait: true
+							},
+							{
+								class: "Cutmode",
+								value: false
+							}
+						]
+					},
+					"use.poli": {
+						id: "use",
+						target: "poli",
+						actions: [
+							{
+								class: "Cutmode",
+								value: true
+							},
+							{
+								class: "Goto",
+								actor: "$PLAYER",
+								target: "poli",
+								pos: "200.0,0.0",
+								ignoreWalkZone: false,
+								wait: true
+							},
+							{
+								class: "LookAt",
+								actor: "poli",
+								wait: true
+							},
+							{
+								class: "Say",
+								actor: "$PLAYER",
+								text: "@crimen.navaja.use.poli.1.text",
+								type: "TALK",
+								queue: false,
+								wait: true
+							},
+							{
+								class: "Cutmode",
+								value: false
+							}
+						]
+					}
+				},
+				interaction: true,
+				zIndex: 0,
+				layer: "dynamic",
+				renderer: {
+					class: "AtlasRenderer",
+					fanims: {
+						navaja: {
+							class: "AtlasAnimationDesc",
+							id: "navaja",
+							source: "crimen",
+							duration: 1,
+							animationType: "NO_REPEAT",
+							count: -1,
+							preload: true
+						}
+					},
+					initAnimation: "navaja",
+					orgAlign: 4
+				},
+				scaleX: 1,
+				scaleY: 1,
+				rot: -22.338388,
+				fakeDepth: false,
+				bboxFromRenderer: true
+			},
+			poli: {
+				class: "CharacterActor",
+				id: "poli",
+				bbox: [ 0, 0, 0, 0, 0, 0, 0, 0 ],
+				pos: {
+					x: 1271.0153,
+					y: 180.7909
+				},
+				visible: true,
+				refPoint: {},
+				verbs: {
+					lookat: {
+						id: "lookat",
+						actions: [
+							{
+								class: "Say",
+								actor: "$PLAYER",
+								text: "@crimen.poli.lookat.0.text",
+								type: "TALK",
+								queue: false,
+								wait: true
+							}
+						]
+					},
+					talkto: {
+						id: "talkto",
+						actions: [
+							{
+								class: "Cutmode",
+								value: true
+							},
+							{
+								class: "Goto",
+								actor: "$PLAYER",
+								target: "poli",
+								pos: "200.0,0.0",
+								ignoreWalkZone: false,
+								wait: true
+							},
+							{
+								class: "LookAt",
+								actor: "poli",
+								wait: true
+							},
+							{
+								class: "Talkto",
+								actor: "poli",
+								dialog: "pregunta"
+							},
+							{
+								class: "Cutmode",
+								value: false
+							}
+						]
+					}
+				},
+				interaction: true,
+				zIndex: 0,
+				layer: "dynamic",
+				renderer: {
+					class: "AtlasRenderer",
+					fanims: {
+						stand: {
+							class: "AtlasAnimationDesc",
+							id: "stand",
+							source: "poli",
+							duration: 1,
+							animationType: "NO_REPEAT",
+							count: -1,
+							preload: true
+						},
+						talk: {
+							class: "AtlasAnimationDesc",
+							id: "talk",
+							source: "poli",
+							duration: 1,
+							animationType: "NO_REPEAT",
+							count: -1,
+							preload: true
+						}
+					},
+					initAnimation: "stand",
+					orgAlign: 4
+				},
+				scaleX: 1,
+				scaleY: 1,
+				rot: 0,
+				fakeDepth: false,
+				bboxFromRenderer: true,
+				dialogs: {
+					pregunta: {
+						id: "pregunta",
+						options: [
+							{
+								text: "@crimen.poli.pregunta.0.text",
+								responseText: "@crimen.poli.pregunta.0.responseText",
+								verbId: null,
+								next: "this",
+								once: false,
+								soundId: null,
+								responseSoundId: null,
+								visible: true
+							},
+							{
+								text: "@crimen.poli.pregunta.1.text1",
+								responseText: "@crimen.poli.pregunta.1.responseText1",
+								verbId: null,
+								next: "this",
+								once: false,
+								soundId: null,
+								responseSoundId: null,
+								visible: true
+							},
+							{
+								text: "@crimen.poli.pregunta.1.text",
+								responseText: "@crimen.poli.pregunta.1.responseText",
+								verbId: null,
+								next: null,
+								once: false,
+								soundId: null,
+								responseSoundId: null,
+								visible: true
+							}
+						]
+					}
+				},
+				walkingSpeed: 1000
+			},
+			puerta: {
+				class: "InteractiveActor",
+				id: "puerta",
+				bbox: [ -63.841797, -314.57623, -100, 200, 490.50854, 337.40125, 490.5083, -314.57632 ],
+				pos: {
+					x: 2899.887,
+					y: 643.6159
+				},
+				visible: true,
+				refPoint: {},
+				verbs: {
+					leave: {
+						id: "leave",
+						actions: [
+							{
+								class: "IfActorAttr",
+								actor: "crimen#puerta",
+								attr: "STATE",
+								value: "activa",
+								caID: "2044736453"
+							},
+							{
+								class: "Leave",
+								scene: "llyo",
+								init: true
+							},
+							{
+								class: "End",
+								caID: "2044736453"
+							},
+							{
+								class: "Say",
+								actor: "$PLAYER",
+								text: "@crimen.puerta.enter.2.text",
+								type: "TALK",
+								queue: false,
+								wait: true
+							},
+							{
+								class: "End",
+								caID: "2044736453"
+							}
+						]
+					}
+				},
+				interaction: true,
+				zIndex: 0,
+				layer: "background"
+			},
+			tarjeta: {
+				class: "SpriteActor",
+				id: "tarjeta",
+				bbox: [ 0, 0, 0, 0, 0, 0, 0, 0 ],
+				pos: {
+					x: -134.2236,
+					y: -419.10626
+				},
+				visible: true,
+				refPoint: {},
+				verbs: {
+					lookat: {
+						id: "lookat",
+						actions: [
+							{
+								class: "Say",
+								actor: "$PLAYER",
+								text: "@crimen.tarjeta.lookat.0.text",
+								type: "TALK",
+								queue: false,
+								wait: true
+							}
+						]
+					}
+				},
+				interaction: true,
+				zIndex: 0,
+				layer: "dynamic",
+				renderer: {
+					class: "AtlasRenderer",
+					fanims: {
+						tarjeta: {
+							class: "AtlasAnimationDesc",
+							id: "tarjeta",
+							source: "crimen",
+							duration: 1,
+							animationType: "NO_REPEAT",
+							count: -1,
+							preload: true
+						}
+					},
+					initAnimation: "tarjeta",
+					orgAlign: 4
+				},
+				scaleX: 1,
+				scaleY: 1,
+				rot: 0,
+				fakeDepth: false,
+				bboxFromRenderer: true
+			},
 			walk1: {
 				class: "WalkZoneActor",
 				id: "walk1",
-				bbox: [ -5.9888916, -65.08472, 15.706238, 926.77966, 804.5175, 931.6759, 898.5849, 301.2931, 2041.6947, 283.16385, 2077.853, -86.77966 ],
+				bbox: [ -5.9888916, -65.08472, 15.706238, 926.77966, 804.5175, 931.6759, 898.5849, 301.2931, 3419.4314, 290.17645, 3442.4414, -21.585325 ],
 				pos: {},
 				visible: true
 			}
@@ -723,6 +1422,28 @@ scenes: {
 		},
 		player: "fantasma",
 		walkZone: "walk"
+	},
+	llyo: {
+		id: "llyo",
+		layers: [
+			{
+				name: "foreground"
+			},
+			{
+				name: "dynamic",
+				dynamic: true
+			},
+			{
+				name: "background"
+			}
+		],
+		actors: {},
+		musicDesc: null,
+		depthVector: {
+			x: 1080
+		},
+		verbs: {},
+		walkZone: null
 	}
 },
 initScene: "hacia-la-luz-1"

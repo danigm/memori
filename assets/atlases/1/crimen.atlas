@@ -1,0 +1,48 @@
+
+crimen.png
+size: 662, 693
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+cartera1
+  rotate: false
+  xy: 393, 61
+  size: 57, 45
+  orig: 57, 45
+  offset: 0, 0
+  index: -1
+cartera2
+  rotate: false
+  xy: 485, 138
+  size: 57, 45
+  orig: 57, 45
+  offset: 0, 0
+  index: -1
+gorila
+  rotate: false
+  xy: 2, 2
+  size: 389, 689
+  orig: 389, 689
+  offset: 0, 0
+  index: -1
+navaja
+  rotate: false
+  xy: 544, 165
+  size: 72, 18
+  orig: 72, 18
+  offset: 0, 0
+  index: -1
+poli
+  rotate: false
+  xy: 393, 185
+  size: 267, 506
+  orig: 267, 506
+  offset: 0, 0
+  index: -1
+tarjeta
+  rotate: false
+  xy: 393, 108
+  size: 90, 75
+  orig: 90, 75
+  offset: 0, 0
+  index: -1

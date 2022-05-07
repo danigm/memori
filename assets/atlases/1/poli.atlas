@@ -1,20 +1,20 @@
 
-backgrounds-1.png
-size: 3504, 2166
+poli.png
+size: 271, 510
 format: RGBA8888
 filter: Linear, Linear
 repeat: none
-crimen
-  rotate: false
-  xy: 2, 1084
-  size: 3500, 1080
-  orig: 3500, 1080
-  offset: 0, 0
-  index: -1
-luz
+stand
   rotate: false
   xy: 2, 2
-  size: 1920, 1080
-  orig: 1920, 1080
+  size: 267, 506
+  orig: 267, 506
+  offset: 0, 0
+  index: -1
+talk
+  rotate: false
+  xy: 2, 2
+  size: 267, 506
+  orig: 267, 506
   offset: 0, 0
   index: -1
